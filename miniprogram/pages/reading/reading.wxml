@@ -1,0 +1,172 @@
+<!-- pages/reading/reading.wxml -->
+<view class="reading-page">
+  <!-- 顶部导航 -->
+  <view class="nav-bar">
+    <view class="nav-left-group">
+      <view class="nav-home" bindtap="onGoBack">
+        <text>↩</text>
+      </view>
+      <view class="nav-back" bindtap="onPrevText" wx:if="{{textNo > 1}}">
+        <text>←</text>
+      </view>
+    </view>
+    <view class="nav-center">
+      <view class="nav-title">
+        {{paper.year}}年 {{paper.exam_type === '考研英语一' ? '英一' : '英二'}} · Text {{textNo}}
+      </view>
+      <view class="nav-timer">
+        <text class="timer-icon">⏱</text>
+        <text class="timer-text">{{timerDisplay}}</text>
+      </view>
+    </view>
+    <view class="nav-next" bindtap="onNextText">
+      <text wx:if="{{textNo < totalTexts}}">→</text>
+      <text wx:else>完成</text>
+    </view>
+  </view>
+
+  <!-- 操作提示栏 -->
+  <view class="tip-bar" wx:if="{{!submitted}}">
+    <text class="tip-text">💡 点击句子右侧的「译」按钮输入中文翻译，点击句子本身标记对应题目</text>
+  </view>
+
+  <!-- 标记图例 -->
+  <view class="mark-legend" wx:if="{{hasUserMarks}}">
+    <view wx:for="{{markColors}}" wx:key="id" class="legend-item">
+      <view class="legend-dot" style="background: {{item.color}}"></view>
+      <text class="legend-label">{{item.label}}</text>
+    </view>
+  </view>
+
+  <!-- 文章区域 -->
+  <scroll-view class="article-scroll" scroll-y enhanced show-scrollbar>
+    <view class="article-content">
+      <view wx:for="{{sentences}}" wx:key="index" 
+            class="sentence-wrap {{submitted ? 'submitted' : ''}}"
+            style="{{sentenceStyles[index]}}"
+            bindtap="onSentenceTap" 
+            bindlongpress="onSentenceLongPress"
+            data-index="{{index}}">
+        <view class="sentence-row">
+          <text class="sentence-text">{{item}}</text>
+          <view class="sentence-actions">
+            <view class="mark-dots">
+              <view wx:for="{{userMarks[index]}}" wx:for-item="mark" wx:key="*this"
+                    class="mini-dot" style="background: {{markColorMap[mark].color}}"></view>
+            </view>
+            <text class="trans-btn {{userTranslations[index] ? 'has-translation' : ''}}" 
+                  bindtap="onSentenceTranslate" 
+                  data-index="{{index}}">译</text>
+          </view>
+        </view>
+        <view class="translation-text" wx:if="{{userTranslations[index]}}">
+          {{userTranslations[index]}}
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 五色标记面板 -->
+  <view class="panel-overlay" wx:if="{{showMarkPanel}}" bindtap="onClosePanel">
+    <view class="mark-panel" catchtap="preventClose">
+      <view class="panel-header">
+        <text>选择标记颜色</text>
+        <text class="panel-close" bindtap="onClosePanel">✕</text>
+      </view>
+      <view class="color-grid">
+        <view wx:for="{{markColors}}" wx:key="id" 
+              class="color-item {{panelSelectedColors[item.id] ? 'selected' : ''}}"
+              bindtap="onMarkColorTap" data-color="{{item.id}}"
+              style="background: {{item.bg}}; border-color: {{item.color}};">
+          <text style="color: {{item.color}}">{{item.label}}</text>
+        </view>
+      </view>
+      <view class="panel-tip">
+        点击切换标记，可多选。对应第{{markColors[0].label}}-{{markColors[4].label}}题
+      </view>
+    </view>
+  </view>
+
+  <!-- 翻译输入面板 -->
+  <view class="panel-overlay" wx:if="{{showTranslatePanel}}" bindtap="onClosePanel">
+    <view class="translate-panel" catchtap="preventClose">
+      <view class="panel-header">
+        <text>翻译句子</text>
+        <text class="panel-close" bindtap="onClosePanel">✕</text>
+      </view>
+      <view class="original-sentence">
+        <text>{{sentences[selectedSentenceIndex]}}</text>
+      </view>
+      <textarea class="translate-input" 
+                placeholder="输入你的中文翻译..."
+                value="{{userTranslations[selectedSentenceIndex]}}"
+                bindinput="onTranslateInput"
+                maxlength="500" />
+      <button class="btn-primary" bindtap="onSaveTranslate">保存翻译</button>
+    </view>
+  </view>
+
+  <!-- AI批卷面板 -->
+  <view class="panel-overlay" wx:if="{{showAIPanel}}" bindtap="onClosePanel">
+    <view class="ai-panel" catchtap="preventClose">
+      <view class="panel-header">
+        <text>AI 批卷 Prompt</text>
+        <text class="panel-close" bindtap="onClosePanel">✕</text>
+      </view>
+      <view class="ai-desc">
+        点击下方按钮复制完整Prompt，粘贴到任意AI工具（如Kimi、ChatGPT）即可获取详细批卷分析。
+      </view>
+      <scroll-view scroll-y class="ai-prompt-scroll">
+        <text class="ai-prompt-text">{{aiPrompt}}</text>
+      </scroll-view>
+      <button class="btn-primary" bindtap="onCopyPrompt">📋 复制Prompt</button>
+    </view>
+  </view>
+
+  <!-- 题目区域 -->
+  <view class="question-area" wx:if="{{showQuestionCard}}">
+    <view class="question-tabs">
+      <scroll-view scroll-x class="q-tabs-scroll">
+        <view wx:for="{{questions}}" wx:key="q_no" 
+              class="q-tab {{questionClasses[index]}}"
+              bindtap="onSelectQuestion" data-index="{{index}}">
+          {{item.q_no}}
+        </view>
+      </scroll-view>
+    </view>
+
+    <view class="question-card" wx:if="{{questions.length > 0}}">
+      <view class="question-text">{{questions[currentQuestion].question}}</view>
+      <view class="options-list">
+        <view wx:for="{{['A','B','C','D']}}" wx:for-item="opt" wx:for-index="optIdx" wx:key="opt"
+              class="option-item {{optionClasses[optIdx]}}"
+              bindtap="onAnswerSelect" 
+              data-qno="{{questions[currentQuestion].q_no}}" data-option="{{opt}}">
+          <view class="option-letter">{{opt}}</view>
+          <text class="option-text">{{questions[currentQuestion].options[opt]}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 提交后结果栏 -->
+    <view class="result-bar" wx:if="{{submitted}}">
+      <view class="result-stats">
+        <text class="result-item">⏱ {{timerDisplay}}</text>
+        <text class="result-item" wx:if="{{correctCount + wrongCount > 0}}">
+          ✅ {{correctCount}} / {{correctCount + wrongCount}}
+        </text>
+        <text class="result-item" wx:else>待AI批卷</text>
+      </view>
+    </view>
+
+    <view class="action-bar safe-area-bottom">
+      <button class="btn-primary {{submitted ? 'disabled' : ''}}" bindtap="onSubmit" disabled="{{submitted}}" wx:if="{{!submitted}}">
+        提交答案
+      </button>
+      <view class="submitted-actions" wx:if="{{submitted}}">
+        <button class="btn-ghost" bindtap="onAIGrade">🤖 AI批卷</button>
+        <button class="btn-primary" bindtap="onNextText">{{textNo < totalTexts ? '下一篇' : '完成'}}</button>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,77 @@
+<!-- pages/review/review.wxml -->
+<view class="container">
+  <view class="review-header">
+    <text class="review-title">错题本</text>
+    <text class="review-count">共 {{wrongs.length}} 题</text>
+  </view>
+
+  <view class="wrong-list" wx:if="{{wrongs.length > 0}}">
+    <view wx:for="{{wrongs}}" wx:key="timestamp" class="wrong-card" bindtap="onWrongTap" data-index="{{index}}">
+      <view class="wrong-header">
+        <text class="wrong-paper">{{item.paperYear}}年 {{item.examType === '考研英语一' ? '英一' : '英二'}} · Text{{item.textNo}}</text>
+        <text class="wrong-qno">Q{{item.question.q_no}}</text>
+      </view>
+      <view class="wrong-question">{{item.question.question}}</view>
+      <view class="wrong-answer">
+        <text class="label">你的答案：</text>
+        <text class="user-ans">{{item.userAnswer}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:else>
+    <text class="empty-icon">📚</text>
+    <text class="empty-text">暂无错题记录</text>
+    <text class="empty-tip">做完题后会自动记录错题</text>
+  </view>
+
+  <view class="clear-btn" wx:if="{{wrongs.length > 0}}" bindtap="onClearAll">
+    <text>清空错题本</text>
+  </view>
+</view>
+
+<!-- 详情弹窗 -->
+<view class="detail-overlay" wx:if="{{showDetail}}" bindtap="onCloseDetail">
+  <view class="detail-panel" catchtap="preventClose">
+    <view class="detail-header">
+      <text class="detail-title">错题详情</text>
+      <text class="detail-close" bindtap="onCloseDetail">✕</text>
+    </view>
+
+    <view class="detail-content" wx:if="{{currentDetail}}">
+      <view class="detail-meta">
+        {{currentDetail.paperYear}}年 {{currentDetail.examType}} · Text{{currentDetail.textNo}} · Q{{currentDetail.question.q_no}}
+        <text wx:if="{{currentDetail.elapsedSeconds}}"> · ⏱{{currentDetail.elapsedSeconds}}秒</text>
+      </view>
+      <view class="detail-question">{{currentDetail.question.question}}</view>
+      
+      <view class="detail-options">
+        <view wx:for="{{['A','B','C','D']}}" wx:for-item="opt" wx:key="opt" class="opt-row">
+          <text class="opt-letter {{currentDetail.userAnswer === opt ? 'wrong' : ''}} {{currentDetail.question.answer === opt ? 'correct' : ''}}">{{opt}}</text>
+          <text>{{currentDetail.question.options[opt]}}</text>
+        </view>
+      </view>
+
+      <view class="detail-marks" wx:if="{{Object.keys(currentDetail.userMarks).length > 0}}">
+        <text class="section-title">你的标记</text>
+        <view wx:for="{{currentDetail.userMarks}}" wx:for-index="idx" wx:for-item="marks" wx:key="idx" class="mark-row">
+          <text class="sent-idx">句{{parseInt(idx)+1}}</text>
+          <view class="mark-tags">
+            <view wx:for="{{marks}}" wx:for-item="m" wx:key="*this" class="mark-tag {{m}}">{{m}}</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="detail-translations" wx:if="{{Object.keys(currentDetail.userTranslations).length > 0}}">
+        <text class="section-title">你的翻译</text>
+        <view wx:for="{{currentDetail.userTranslations}}" wx:for-index="idx" wx:for-item="trans" wx:key="idx" class="trans-row">
+          <text class="sent-idx">句{{parseInt(idx)+1}}</text>
+          <text class="trans-text">{{trans}}</text>
+        </view>
+      </view>
+
+      <button class="btn-primary" bindtap="onGoRetry" data-wrong="{{currentDetail}}">重新练习</button>
+      <button class="btn-ghost" bindtap="onGoAIParse" data-wrong="{{currentDetail}}" style="margin-top:12px;">🤖 AI解析本题</button>
+    </view>
+  </view>
+</view>

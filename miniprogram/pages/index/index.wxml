@@ -1,0 +1,44 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <!-- 顶部统计 -->
+  <view class="stats-bar">
+    <view class="stat-item">
+      <text class="stat-num">{{stats.total}}</text>
+      <text class="stat-label">已做</text>
+    </view>
+    <view class="stat-item" bindtap="onGoReview">
+      <text class="stat-num">{{stats.wrong}}</text>
+      <text class="stat-label">错题</text>
+    </view>
+  </view>
+
+  <!-- 筛选栏 -->
+  <view class="filter-bar">
+    <view class="filter-group">
+      <view class="filter-item {{filter === 'all' ? 'active' : ''}}" bindtap="onFilterChange" data-type="all">全部</view>
+      <view class="filter-item {{filter === 'english1' ? 'active' : ''}}" bindtap="onFilterChange" data-type="english1">英语一</view>
+      <view class="filter-item {{filter === 'english2' ? 'active' : ''}}" bindtap="onFilterChange" data-type="english2">英语二</view>
+    </view>
+    <picker mode="selector" range="{{years}}" bindchange="onYearChange">
+      <view class="year-picker">{{selectedYear === 'all' ? '年份' : selectedYear + '年'}} ▼</view>
+    </picker>
+  </view>
+
+  <!-- 试卷列表 -->
+  <view class="paper-list">
+    <view wx:for="{{filteredPapers}}" wx:key="paper_id" class="paper-card" bindtap="onPaperTap" data-id="{{item.paper_id}}">
+      <view class="paper-header">
+        <text class="paper-year">{{item.year}}年</text>
+        <view class="tag {{item.exam_type === '考研英语一' ? 'tag-english1' : 'tag-english2'}}">
+          {{item.exam_type === '考研英语一' ? '英语一' : '英语二'}}
+        </view>
+      </view>
+      <view class="paper-progress">
+        <view class="progress-bar">
+          <view class="progress-fill" style="width: {{item.progressPercent}}%"></view>
+        </view>
+        <text class="progress-text">{{item.doneCount}}/{{item.totalCount}} 篇</text>
+      </view>
+    </view>
+  </view>
+</view>
