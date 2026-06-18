@@ -78,5 +78,11 @@ Page({
     wx.navigateTo({
       url: '/pages/review/review'
     });
+  },
+
+  onGoWriting() {
+    wx.navigateTo({
+      url: '/pages/writing/writing'
+    });
   }
 });

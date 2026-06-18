@@ -1,0 +1,411 @@
+.container {
+  padding: 20rpx;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* Tab Bar */
+.tab-bar {
+  display: flex;
+  background: #fff;
+  border-radius: 12rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx 0;
+  font-size: 28rpx;
+  color: #666;
+  border-bottom: 4rpx solid transparent;
+}
+
+.tab.active {
+  color: #2c8cf0;
+  border-bottom-color: #2c8cf0;
+  font-weight: 600;
+}
+
+/* Essay List */
+.essay-list {
+  margin-top: 10rpx;
+}
+
+.essay-card {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.06);
+}
+
+.essay-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+
+.essay-type {
+  font-size: 24rpx;
+  color: #2c8cf0;
+  background: #e8f4fd;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+}
+
+.essay-year {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.essay-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.essay-preview {
+  font-size: 26rpx;
+  color: #888;
+  line-height: 1.5;
+}
+
+/* Templates */
+.template-section {
+  margin-top: 10rpx;
+}
+
+.template-group {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+}
+
+.template-category {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16rpx;
+  padding-bottom: 12rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+
+.template-item {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.template-text {
+  flex: 1;
+  font-size: 26rpx;
+  color: #555;
+  line-height: 1.5;
+}
+
+.copy-btn {
+  font-size: 22rpx;
+  color: #2c8cf0;
+  padding: 4rpx 12rpx;
+  border: 1rpx solid #2c8cf0;
+  border-radius: 8rpx;
+  margin-left: 12rpx;
+}
+
+/* Writing Page */
+.writing-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.back-btn {
+  font-size: 28rpx;
+  color: #2c8cf0;
+  padding: 8rpx 16rpx;
+}
+
+.essay-type-tag {
+  font-size: 24rpx;
+  color: #999;
+  margin-left: 20rpx;
+}
+
+.prompt-card {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.prompt-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.prompt-text {
+  font-size: 26rpx;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20rpx;
+}
+
+.tips {
+  background: #f8f9fa;
+  border-radius: 8rpx;
+  padding: 20rpx;
+}
+
+.tip-title {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.tip-item {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+.writing-area {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.essay-input {
+  width: 100%;
+  min-height: 400rpx;
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #333;
+}
+
+.word-count {
+  text-align: right;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 12rpx;
+}
+
+.action-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10rpx;
+}
+
+.btn-template {
+  flex: 1;
+  margin-right: 20rpx;
+  background: #fff;
+  color: #2c8cf0;
+  border: 2rpx solid #2c8cf0;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  padding: 24rpx 0;
+}
+
+.btn-submit {
+  flex: 1;
+  background: #2c8cf0;
+  color: #fff;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  padding: 24rpx 0;
+  border: none;
+}
+
+/* Modals */
+.template-modal, .result-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+}
+
+.template-panel, .result-panel {
+  background: #fff;
+  border-radius: 24rpx 24rpx 0 0;
+  width: 100%;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28rpx 32rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.close-btn {
+  font-size: 32rpx;
+  color: #999;
+  padding: 8rpx;
+}
+
+.template-scroll, .result-scroll {
+  flex: 1;
+  padding: 24rpx 32rpx;
+}
+
+.template-row {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.template-cat {
+  font-size: 24rpx;
+  color: #2c8cf0;
+  margin-bottom: 8rpx;
+}
+
+.template-sentence {
+  font-size: 26rpx;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 8rpx;
+}
+
+/* Result */
+.score-section {
+  text-align: center;
+  padding: 40rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.score-title {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+}
+
+.score-value {
+  font-size: 72rpx;
+  font-weight: 700;
+  margin-bottom: 12rpx;
+}
+
+.score-desc {
+  font-size: 26rpx;
+  color: #888;
+}
+
+.dimension-section {
+  padding: 28rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.dim-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.dim-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.dim-name {
+  width: 140rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.dim-bar {
+  flex: 1;
+  height: 16rpx;
+  background: #f0f0f0;
+  border-radius: 8rpx;
+  overflow: hidden;
+  margin: 0 16rpx;
+}
+
+.dim-fill {
+  height: 100%;
+  border-radius: 8rpx;
+}
+
+.dim-score {
+  width: 60rpx;
+  font-size: 24rpx;
+  color: #333;
+  text-align: right;
+}
+
+.feedback-section {
+  padding: 28rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.fb-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.fb-item {
+  font-size: 26rpx;
+  color: #555;
+  line-height: 1.6;
+  padding: 10rpx 0;
+  border-bottom: 1rpx solid #f8f8f8;
+}
+
+.template-recommend {
+  padding: 28rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.rec-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.rec-item {
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.rec-sentence {
+  font-size: 26rpx;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 8rpx;
+}
+
+.ai-parse-btn {
+  margin: 28rpx 0;
+  padding: 24rpx;
+  background: #e8f4fd;
+  border-radius: 12rpx;
+  text-align: center;
+  color: #2c8cf0;
+  font-size: 28rpx;
+}

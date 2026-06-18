@@ -1,0 +1,17 @@
+# Temporary data files
+fix_data.py
+fix_data_v*.py
+top_words.txt
+combined_words.txt
+miniprogram/data_backup/
+
+# Node modules
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

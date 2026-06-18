@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/reading/reading",
-    "pages/review/review"
+    "pages/review/review",
+    "pages/writing/writing"
   ],
   "window": {
     "backgroundTextStyle": "light",

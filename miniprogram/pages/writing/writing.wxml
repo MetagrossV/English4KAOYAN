@@ -1,0 +1,130 @@
+<view class="container">
+  <!-- 题目列表页 -->
+  <block wx:if="{{!isWriting}}">
+    <view class="tab-bar">
+      <view class="tab {{activeTab==='small'?'active':''}}" bindtap="onSwitchTab" data-tab="small">小作文</view>
+      <view class="tab {{activeTab==='big'?'active':''}}" bindtap="onSwitchTab" data-tab="big">大作文</view>
+      <view class="tab {{activeTab==='templates'?'active':''}}" bindtap="onSwitchTab" data-tab="templates">模板句</view>
+    </view>
+    
+    <block wx:if="{{activeTab==='small' || activeTab==='big'}}">
+      <view class="essay-list">
+        <view wx:for="{{essays}}" wx:key="id" class="essay-card" bindtap="onSelectEssay" data-id="{{item.id}}">
+          <view class="essay-header">
+            <text class="essay-type">{{item.exam_type}}</text>
+            <text class="essay-year">{{item.year}}年</text>
+          </view>
+          <view class="essay-title">{{item.title}}</view>
+          <view class="essay-preview">{{item.prompt.substring(0,60)}}...</view>
+        </view>
+      </view>
+    </block>
+    
+    <block wx:if="{{activeTab==='templates'}}">
+      <view class="template-section">
+        <view wx:for="{{templateCategories}}" wx:key="category" class="template-group">
+          <view class="template-category">{{item.category}}</view>
+          <view wx:for="{{item.sentences}}" wx:for-item="sent" wx:key="*this" class="template-item">
+            <text class="template-text">{{sent}}</text>
+            <text class="copy-btn" bindtap="onCopyTemplate" data-text="{{sent}}">复制</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </block>
+  
+  <!-- 写作页面 -->
+  <block wx:if="{{isWriting}}">
+    <view class="writing-header">
+      <text class="back-btn" bindtap="onBack">← 返回</text>
+      <text class="essay-type-tag">{{currentEssay.exam_type}} {{currentEssay.year}}年</text>
+    </view>
+    
+    <view class="prompt-card">
+      <view class="prompt-title">{{currentEssay.title}}</view>
+      <view class="prompt-text">{{currentEssay.prompt}}</view>
+      <view class="tips">
+        <view class="tip-title">写作提示：</view>
+        <view wx:for="{{currentEssay.tips}}" wx:key="*this" class="tip-item">• {{item}}</view>
+      </view>
+    </view>
+    
+    <view class="writing-area">
+      <textarea 
+        class="essay-input" 
+        placeholder="请在此处输入作文..." 
+        maxlength="3000"
+        bindinput="onInput"
+        value="{{userEssay}}"
+      ></textarea>
+      <view class="word-count">字数：{{wordCount}} 词</view>
+    </view>
+    
+    <view class="action-bar">
+      <button class="btn-template" bindtap="onShowTemplates">模板句</button>
+      <button class="btn-submit" bindtap="onSubmit">提交批改</button>
+    </view>
+    
+    <!-- 模板句弹窗 -->
+    <view class="template-modal" wx:if="{{showTemplates}}" bindtap="onCloseTemplates">
+      <view class="template-panel" catchtap="preventClose">
+        <view class="panel-header">
+          <text>模板句库</text>
+          <text class="close-btn" bindtap="onCloseTemplates">✕</text>
+        </view>
+        <scroll-view scroll-y class="template-scroll">
+          <view wx:for="{{currentEssay.templates}}" wx:key="*this" class="template-row">
+            <view class="template-cat">{{item.category}}</view>
+            <view class="template-sentence">{{item.sentence}}</view>
+            <text class="copy-btn" bindtap="onCopyTemplate" data-text="{{item.sentence}}">复制</text>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    
+    <!-- 评估结果 -->
+    <view class="result-modal" wx:if="{{showResult}}" bindtap="onCloseResult">
+      <view class="result-panel" catchtap="preventClose">
+        <view class="panel-header">
+          <text>AI 评估报告</text>
+          <text class="close-btn" bindtap="onCloseResult">✕</text>
+        </view>
+        <scroll-view scroll-y class="result-scroll">
+          <view class="score-section">
+            <view class="score-title">综合评分</view>
+            <view class="score-value" style="color: {{scoreColor}}">{{score}} / 100</view>
+            <view class="score-desc">{{scoreDesc}}</view>
+          </view>
+          
+          <view class="dimension-section">
+            <view class="dim-title">各维度评分</view>
+            <view wx:for="{{dimensions}}" wx:key="name" class="dim-row">
+              <text class="dim-name">{{item.name}}</text>
+              <view class="dim-bar">
+                <view class="dim-fill" style="width: {{item.value}}%; background: {{item.color}}"></view>
+              </view>
+              <text class="dim-score">{{item.value}}</text>
+            </view>
+          </view>
+          
+          <view class="feedback-section">
+            <view class="fb-title">改进建议</view>
+            <view wx:for="{{feedbacks}}" wx:key="*this" class="fb-item">{{item}}</view>
+          </view>
+          
+          <view class="template-recommend">
+            <view class="rec-title">推荐模板句</view>
+            <view wx:for="{{recommendTemplates}}" wx:key="*this" class="rec-item">
+              <view class="rec-sentence">{{item.sentence}}</view>
+              <text class="copy-btn" bindtap="onCopyTemplate" data-text="{{item.sentence}}">复制</text>
+            </view>
+          </view>
+          
+          <view class="ai-parse-btn" bindtap="onCopyAIParse">
+            <text>复制完整 AI 解析 Prompt</text>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </block>
+</view>

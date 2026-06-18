@@ -10,6 +10,10 @@
       <text class="stat-num">{{stats.wrong}}</text>
       <text class="stat-label">错题</text>
     </view>
+    <view class="stat-item" bindtap="onGoWriting">
+      <text class="stat-num">✍️</text>
+      <text class="stat-label">写作</text>
+    </view>
   </view>
 
   <!-- 筛选栏 -->
