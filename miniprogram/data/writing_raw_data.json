@@ -1,0 +1,294 @@
+{
+  "english1": {
+    "small": [
+      {
+        "year": 2015,
+        "type": "letter",
+        "title": "推荐信",
+        "prompt": "Suppose you are a member of a book club. Write an email to the other members of the club to recommend a book you like. You should include the reasons for your recommendation.",
+        "word_count": 100
+      },
+      {
+        "year": 2016,
+        "type": "notice",
+        "title": "通知",
+        "prompt": "Suppose you are a librarian in your university. Write a notice of about 100 words, providing the newly-enrolled international students with relevant information about the library.",
+        "word_count": 100
+      },
+      {
+        "year": 2017,
+        "type": "letter",
+        "title": "建议信（展示中国文化）",
+        "prompt": "You are to write an email to James Cook, a newly-arrived Australian professor, recommending some famous tourist attractions in your city. Please give reasons for your recommendation.",
+        "word_count": 100
+      },
+      {
+        "year": 2018,
+        "type": "letter",
+        "title": "道歉信+建议信",
+        "prompt": "Suppose you have to cancel your travel plan and will not be able to visit Professor Smith. Write him an email to apologize and suggest a future meeting.",
+        "word_count": 100
+      },
+      {
+        "year": 2019,
+        "type": "letter",
+        "title": "答复信/介绍信",
+        "prompt": "Suppose you are working for the 'Aiding Rural Primary School' project of your university. Write an email to answer the inquiry from an international student volunteer, specifying the details of the project.",
+        "word_count": 100
+      },
+      {
+        "year": 2020,
+        "type": "notice",
+        "title": "通知",
+        "prompt": "The student union of your university has assigned you to inform the international students about an upcoming singing contest. Write a notice in about 100 words.",
+        "word_count": 100
+      },
+      {
+        "year": 2021,
+        "type": "letter",
+        "title": "建议信",
+        "prompt": "One foreign friend of yours has recently graduated from college and intends to find a job in China. Please write an email to him/her to make some suggestions.",
+        "word_count": 100
+      },
+      {
+        "year": 2022,
+        "type": "letter",
+        "title": "邀请信",
+        "prompt": "Write an e-mail to a professor at a British university, inviting him/her to organize a team for the international innovation contest to be held at your university.",
+        "word_count": 100
+      },
+      {
+        "year": 2023,
+        "type": "notice",
+        "title": "通知",
+        "prompt": "Write a notice to recruit a student for Prof. Smith's research project on campus sports activities. Specify the duties and requirements of the job.",
+        "word_count": 100
+      },
+      {
+        "year": 2024,
+        "type": "letter",
+        "title": "建议信",
+        "prompt": "Suppose you receive an email from your friend Paul, who has got a class assignment to make an oral report on an ancient Chinese scientist, but doesn't know how to prepare for it. Write him a reply to give some advice.",
+        "word_count": 100
+      }
+    ],
+    "big": [
+      {
+        "year": 2015,
+        "type": "picture",
+        "title": "手机时代的聚会",
+        "prompt": "Write an essay of 160-200 words based on the following picture. In your essay, you should 1) describe the picture briefly, 2) interpret its intended meaning, and 3) give your comments. The picture shows a group of young people having a gathering, but instead of talking with each other, each of them is focused on their mobile phone. The caption reads: 'The Meeting in the Mobile-Phone Era'.",
+        "word_count": 200
+      },
+      {
+        "year": 2016,
+        "type": "picture",
+        "title": "榜样的力量",
+        "prompt": "Write an essay of 160-200 words based on the following pictures. In your essay, you should 1) describe the pictures briefly, 2) interpret the meaning, and 3) give your comments. The first picture shows a father sitting on the sofa watching TV and smoking, while telling his son to study hard. The second picture shows a father studying diligently at his desk, setting a good example for his son to follow.",
+        "word_count": 200
+      },
+      {
+        "year": 2017,
+        "type": "picture",
+        "title": "'有书'与'读书'",
+        "prompt": "Write an essay of 160-200 words based on the following picture. In your essay, you should 1) describe the picture briefly, 2) interpret its intended meaning, and 3) give your comments. The left picture shows a boy with many books around him, but he doesn't read any. The right picture shows another boy making a plan to read 20 books a year.",
+        "word_count": 200
+      },
+      {
+        "year": 2018,
+        "type": "picture",
+        "title": "选课进行时",
+        "prompt": "Write an essay of 160-200 words based on the picture below. In your essay, you should 1) describe the picture briefly, 2) interpret the meaning, and 3) give your comments. The picture shows a student choosing courses. He is considering whether to choose courses with high scores and less homework or those with new knowledge and creative focus.",
+        "word_count": 200
+      },
+      {
+        "year": 2019,
+        "type": "picture",
+        "title": "在途中（毅力）",
+        "prompt": "Write an essay of 160-200 words based on the following picture. In your essay, you should 1) describe the picture briefly, 2) interpret its intended meaning, and 3) give your comments. The picture shows two people climbing a mountain. One sits on the steps saying 'I'm tired, I don't want to climb anymore.' The other, carrying a backpack, hands him a cup of water and says 'Don't give up. Take a rest and keep climbing.' The caption reads 'On the Way'.",
+        "word_count": 200
+      },
+      {
+        "year": 2020,
+        "type": "picture",
+        "title": "习惯",
+        "prompt": "Write an essay of 160-200 words based on the pictures below. In your essay, you should 1) describe the pictures briefly, 2) interpret the implied meaning, and 3) give your comments. The left picture shows a girl doing homework, saying 'Better finish it early so I can rest assured.' The right picture shows a boy sitting leisurely, saying 'No hurry, I'll do it at the last minute.' The caption below reads 'Habit'.",
+        "word_count": 200
+      },
+      {
+        "year": 2021,
+        "type": "picture",
+        "title": "坚持自己的爱好",
+        "prompt": "Write an essay of 160-200 words based on the pictures below. In your essay, you should 1) describe the pictures briefly, 2) interpret the implied meaning, and 3) give your comments. The left picture shows a young person complaining: 'I want to learn traditional opera, but my friend says it's boring.' The right picture shows his father encouraging him: 'What matters is that you like it.'",
+        "word_count": 200
+      },
+      {
+        "year": 2022,
+        "type": "picture",
+        "title": "是否参加讲座",
+        "prompt": "Write an essay of 160-200 words based on the following drawing. In your essay, you should 1) describe the drawing briefly, 2) explain its intended meaning, and 3) give your comments. The drawing shows two students standing in front of a poster of a campus lecture. The one on the left says it doesn't belong to his major and is useless. The other holds the opposite idea that it may be useful to study and growth.",
+        "word_count": 200
+      },
+      {
+        "year": 2023,
+        "type": "picture",
+        "title": "龙舟比赛（传统文化）",
+        "prompt": "Write an essay of 160-200 words based on the picture below. In your essay, you should 1) describe the picture briefly, 2) interpret the implied meaning, and 3) give your comments. The picture vividly depicts a festive scene of a dragon boat race. Many villagers in festive costumes are rowing dragon boats on the river. The theme is related to traditional Chinese culture.",
+        "word_count": 200
+      },
+      {
+        "year": 2024,
+        "type": "picture",
+        "title": "市民健身+公园数量增长",
+        "prompt": "Write an essay of 160-200 words based on the pictures below. In your essay, you should 1) describe the pictures briefly, 2) interpret the implied meaning, and 3) give your comments. One picture shows residents exercising in a park fitness area. The other is a bar chart showing the number of parks in a city increasing from 406 in 2020 to 670 in 2022.",
+        "word_count": 200
+      }
+    ]
+  },
+  "english2": {
+    "small": [
+      {
+        "year": 2015,
+        "type": "notice",
+        "title": "通知",
+        "prompt": "Suppose your university is going to host a summer camp for high school students. Write a notice to briefly introduce the camp and call for volunteers.",
+        "word_count": 100
+      },
+      {
+        "year": 2016,
+        "type": "letter",
+        "title": "祝贺信+建议信",
+        "prompt": "Suppose you won a translation contest and your friend Jack wrote an email to congratulate you and ask for advice on translation. Write him a reply to thank him and give your advice.",
+        "word_count": 100
+      },
+      {
+        "year": 2017,
+        "type": "letter",
+        "title": "介绍信+邀请信",
+        "prompt": "Suppose you are invited by Professor Williams to give a presentation about Chinese culture to his foreign students. Write him a reply to accept the invitation and introduce the key points of your presentation.",
+        "word_count": 100
+      },
+      {
+        "year": 2018,
+        "type": "letter",
+        "title": "道歉信+建议信",
+        "prompt": "Suppose you have to cancel your travel plan and will not be able to visit Professor Smith. Write him an email to apologize and suggest a future meeting.",
+        "word_count": 100
+      },
+      {
+        "year": 2019,
+        "type": "letter",
+        "title": "建议信+介绍信",
+        "prompt": "Suppose Professor Smith asks you to plan a debate on the theme of city traffic. Write an email to him to suggest a topic with your reasons and introduce your arrangements.",
+        "word_count": 100
+      },
+      {
+        "year": 2020,
+        "type": "letter",
+        "title": "介绍信+建议信",
+        "prompt": "Suppose you are planning a tour of a historical site for a group of international students. Write them an email to tell them about the site and give them some tips for the tour.",
+        "word_count": 100
+      },
+      {
+        "year": 2021,
+        "type": "letter",
+        "title": "邀请信+介绍信",
+        "prompt": "Suppose you are organizing an online meeting. Write an email to Jack, an international student, to invite him to participate and tell him about the details.",
+        "word_count": 100
+      },
+      {
+        "year": 2022,
+        "type": "letter",
+        "title": "邀请信",
+        "prompt": "Suppose you are planning a campus food festival. Write an email to international students in your university to introduce the food festival and invite them to participate.",
+        "word_count": 100
+      },
+      {
+        "year": 2023,
+        "type": "letter",
+        "title": "建议信",
+        "prompt": "Suppose your friend David wrote to you for advice on whether to visit an art exhibition or a robot show. Write him a reply to give your suggestion and explain your reasons.",
+        "word_count": 100
+      },
+      {
+        "year": 2024,
+        "type": "letter",
+        "title": "计划信+征求意见",
+        "prompt": "Suppose you and your friend Jack will do a survey on the protection of old houses in an ancient town. Write an email to put forward a plan and ask for his opinion.",
+        "word_count": 100
+      }
+    ],
+    "big": [
+      {
+        "year": 2015,
+        "type": "chart",
+        "title": "饼状图：春节假期花销比例",
+        "prompt": "Write an essay based on the chart below. In your writing, you should 1) interpret the chart, and 2) give your comments. The pie chart shows the proportions of spending during the Spring Festival holiday in a certain city, including gifts, transportation, food, and other expenses.",
+        "word_count": 150
+      },
+      {
+        "year": 2016,
+        "type": "chart",
+        "title": "饼状图：高校学生旅游目的调查",
+        "prompt": "Write an essay based on the chart below. In your writing, you should 1) interpret the chart, and 2) give your comments. The pie chart shows the results of a survey on the purposes of travel among college students.",
+        "word_count": 150
+      },
+      {
+        "year": 2017,
+        "type": "chart",
+        "title": "折线图：博物馆数量及参观人数",
+        "prompt": "Write an essay based on the chart below. In your writing, you should 1) interpret the chart, and 2) give your comments. The line chart shows the number of museums and their visitors from 2013 to 2015.",
+        "word_count": 150
+      },
+      {
+        "year": 2018,
+        "type": "chart",
+        "title": "饼状图：消费者选择餐厅关注因素",
+        "prompt": "Write an essay based on the chart below. In your writing, you should 1) interpret the chart, and 2) give your comments. The pie chart shows the factors consumers consider when choosing a restaurant in a certain city in 2017.",
+        "word_count": 150
+      },
+      {
+        "year": 2019,
+        "type": "chart",
+        "title": "柱状图：高校毕业生去向统计",
+        "prompt": "Write an essay based on the chart below. In your writing, you should 1) interpret the chart, and 2) give your comments. The bar chart shows the changes in the destinations of graduates from a certain university in 2013 and 2018.",
+        "word_count": 150
+      },
+      {
+        "year": 2020,
+        "type": "chart",
+        "title": "饼状图：学生手机阅读目的调查",
+        "prompt": "Write an essay based on the chart below. In your writing, you should 1) interpret the chart, and 2) give your comments. The pie chart shows the purposes of mobile phone reading among college students: learning (59.5%), passing time (20.5%), browsing information (17%), and others (2%).",
+        "word_count": 150
+      },
+      {
+        "year": 2021,
+        "type": "chart",
+        "title": "柱状图：居民体育锻炼方式调查",
+        "prompt": "Write an essay based on the following chart. In your writing, you should 1) interpret the chart, and 2) give your comments. The bar chart shows the results of a survey about how people in a certain city do physical exercise: alone (54.3%), with friends (23.9%), with family (15.8%), and in associations (15.8%).",
+        "word_count": 150
+      },
+      {
+        "year": 2022,
+        "type": "chart",
+        "title": "柱状图：快递业务量变动",
+        "prompt": "Write an essay based on the chart below. In your writing, you should 1) interpret the chart, and 2) give your comments. The bar chart shows the changes in China's express delivery business volume from 2018 to 2020.",
+        "word_count": 150
+      },
+      {
+        "year": 2023,
+        "type": "chart",
+        "title": "折线图：居民健康素养水平",
+        "prompt": "Write an essay based on the chart below. In your writing, you should 1) interpret the chart, and 2) give your comments. The line chart shows the level of health literacy among Chinese residents from 2012 to 2021, increasing from 8.8% to 25.4%.",
+        "word_count": 150
+      },
+      {
+        "year": 2024,
+        "type": "chart",
+        "title": "柱状图：劳动实践课学生收获调查",
+        "prompt": "Write an essay based on the chart below. In your writing, you should 1) interpret the chart, and 2) give your comments. The bar chart shows the results of a survey about students' main gains from practical labor courses in a university: learning knowledge (90%), practical skills (80%), good mood (50%), and teamwork (30%).",
+        "word_count": 150
+      }
+    ]
+  }
+}

@@ -3,12 +3,37 @@
     "pages/index/index",
     "pages/reading/reading",
     "pages/review/review",
-    "pages/writing/writing"
+    "pages/writing/writing",
+    "pages/grammar/grammar"
   ],
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#2c8cf0",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "阅读"
+      },
+      {
+        "pagePath": "pages/writing/writing",
+        "text": "写作"
+      },
+      {
+        "pagePath": "pages/grammar/grammar",
+        "text": "语法"
+      },
+      {
+        "pagePath": "pages/review/review",
+        "text": "复习"
+      }
+    ]
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "考研阅读助手",
+    "navigationBarTitleText": "考研英语助手",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",

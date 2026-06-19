@@ -1,0 +1,14 @@
+============================================================
+Chinese OCR Cleanup Report (Strict: U+4E00-U+9FFF)
+============================================================
+Detection range: U+4E00 ~ U+9FFF (Standard CJK Unified Ideographs)
+Files processed: 32
+Files with Chinese: 0
+Total changes: 0
+all_papers.js regenerated with 32 papers
+============================================================
+
+RESULT: No CJK characters (U+4E00-U+9FFF) found in any file.
+All text content is English. No Chinese OCR residue detected.
+
+============================================================

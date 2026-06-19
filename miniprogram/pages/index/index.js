@@ -38,9 +38,16 @@ Page({
     const progress = dataLoader.getUserProgress();
     const wrongs = dataLoader.getWrongQuestions();
     const keys = Object.keys(progress);
+    
+    // 加载语法进度
+    const grammarProgress = wx.getStorageSync('grammar_progress') || {};
+    const completedPoints = grammarProgress.completed_points || [];
+    const grammarProgressStr = completedPoints.length + '/12';
+    
     this.setData({
       'stats.total': keys.length,
-      'stats.wrong': wrongs.length
+      'stats.wrong': wrongs.length,
+      grammarProgress: grammarProgressStr
     });
   },
 

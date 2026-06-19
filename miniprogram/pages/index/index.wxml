@@ -1,18 +1,18 @@
 <!-- pages/index/index.wxml -->
 <view class="container">
-  <!-- 顶部统计 -->
-  <view class="stats-bar">
-    <view class="stat-item">
-      <text class="stat-num">{{stats.total}}</text>
-      <text class="stat-label">已做</text>
+  <!-- 学习概览 -->
+  <view class="overview-bar">
+    <view class="overview-item" bindtap="onGoReview">
+      <text class="overview-num">{{stats.wrong}}</text>
+      <text class="overview-label">错题本</text>
     </view>
-    <view class="stat-item" bindtap="onGoReview">
-      <text class="stat-num">{{stats.wrong}}</text>
-      <text class="stat-label">错题</text>
+    <view class="overview-item">
+      <text class="overview-num">{{stats.total}}</text>
+      <text class="overview-label">已做题</text>
     </view>
-    <view class="stat-item" bindtap="onGoWriting">
-      <text class="stat-num">✍️</text>
-      <text class="stat-label">写作</text>
+    <view class="overview-item">
+      <text class="overview-num">{{grammarProgress}}</text>
+      <text class="overview-label">语法进度</text>
     </view>
   </view>
 

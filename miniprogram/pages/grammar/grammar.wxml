@@ -1,0 +1,154 @@
+<view class="container">
+  <!-- 阶段列表 -->
+  <block wx:if="{{viewMode === 'list'}}">
+    <view class="grammar-header">
+      <view class="header-title">语法训练</view>
+      <view class="header-subtitle">从基础到高级，系统掌握考研语法</view>
+    </view>
+    
+    <view class="stage-list">
+      <view wx:for="{{stages}}" wx:key="id" class="stage-card" bindtap="onSelectStage" data-id="{{item.id}}">
+        <view class="stage-info">
+          <view class="stage-name">{{item.name}}</view>
+          <view class="stage-desc">{{item.description}}</view>
+          <view class="stage-progress">
+            <view class="progress-bar">
+              <view class="progress-fill" style="width: {{item.progressPercent}}%"></view>
+            </view>
+            <text class="progress-text">{{item.completedCount}}/{{item.totalCount}}</text>
+          </view>
+        </view>
+        <view class="stage-arrow">→</view>
+      </view>
+    </view>
+    
+    <view class="recommend-btn" bindtap="onRecommendTrain">
+      <text>智能推荐薄弱点训练</text>
+    </view>
+  </block>
+
+  <!-- 知识点列表 -->
+  <block wx:if="{{viewMode === 'stage'}}">
+    <view class="stage-header">
+      <text class="back-btn" bindtap="onBack">← 返回</text>
+      <text class="stage-title">{{currentStage.name}}</text>
+    </view>
+    
+    <view class="point-list">
+      <view wx:for="{{currentStage.points}}" wx:key="id" class="point-card" bindtap="onSelectPoint" data-id="{{item.id}}">
+        <view class="point-status">
+          <view class="status-dot {{progress.completed_points.includes(item.id) ? 'done' : ''}}"></view>
+        </view>
+        <view class="point-info">
+          <view class="point-name">{{item.name}}</view>
+          <view class="point-count">{{item.questions.length}} 题</view>
+        </view>
+        <view class="point-arrow">→</view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 练习页面 -->
+  <block wx:if="{{viewMode === 'point'}}">
+    <view class="point-header">
+      <text class="back-btn" bindtap="onBack">← 返回</text>
+      <text class="point-title">{{currentPoint.name}}</text>
+    </view>
+    
+    <!-- 规则说明 -->
+    <view class="rules-section">
+      <view class="section-title">语法规则</view>
+      <view wx:for="{{currentPoint.rules}}" wx:key="*this" class="rule-item">{{item}}</view>
+    </view>
+    
+    <!-- 例句 -->
+    <view class="examples-section">
+      <view class="section-title">例句</view>
+      <view wx:for="{{currentPoint.examples}}" wx:key="*this" class="example-item">{{item}}</view>
+    </view>
+    
+    <!-- 练习题 -->
+    <view class="question-section" wx:if="{{currentPoint.questions.length > 0}}">
+      <view class="question-progress">
+        <text>题目 {{currentQuestionIndex + 1}} / {{currentPoint.questions.length}}</text>
+      </view>
+      
+      <view class="question-card">
+        <view class="question-text">{{currentPoint.questions[currentQuestionIndex].question}}</view>
+        
+        <!-- 选择题 -->
+        <block wx:if="{{currentPoint.questions[currentQuestionIndex].type === 'choice'}}">
+          <view class="options-list">
+            <view wx:for="{{currentPoint.questions[currentQuestionIndex].options}}" wx:for-item="opt" wx:for-index="key" wx:key="key" 
+              class="option-item {{userAnswers[currentQuestionIndex] === key ? (userAnswers[currentQuestionIndex] === currentPoint.questions[currentQuestionIndex].answer ? 'correct' : 'wrong') : ''}} {{showExplanation && currentPoint.questions[currentQuestionIndex].answer === key ? 'right-answer' : ''}}"
+              bindtap="{{!showExplanation ? 'onSelectAnswer' : ''}}"
+              data-answer="{{key}}">
+              <text class="option-key">{{key}}</text>
+              <text class="option-text">{{opt}}</text>
+            </view>
+          </view>
+        </block>
+        
+        <!-- 排序题 -->
+        <block wx:if="{{currentPoint.questions[currentQuestionIndex].type === 'reorder'}}">
+          <view class="reorder-answer">
+            <view wx:for="{{reorderAnswer}}" wx:key="*this" class="reorder-word">{{item}}</view>
+            <view wx:if="{{reorderAnswer.length === 0}}" class="reorder-placeholder">点击下方单词组成句子</view>
+          </view>
+          <view class="reorder-actions">
+            <text class="undo-btn" bindtap="onUndoReorder">↩ 撤销</text>
+          </view>
+          <view class="reorder-words">
+            <view wx:for="{{reorderWords}}" wx:key="*this" class="reorder-word" bindtap="onSelectWord" data-word="{{item}}" data-index="{{index}}">{{item}}</view>
+          </view>
+        </block>
+        
+        <!-- 解析 -->
+        <view class="explanation" wx:if="{{showExplanation}}">
+          <view class="ex-title">解析</view>
+          <view class="ex-text">{{currentPoint.questions[currentQuestionIndex].explanation}}</view>
+          <view class="ex-answer">正确答案：{{currentPoint.questions[currentQuestionIndex].answer}}</view>
+        </view>
+      </view>
+      
+      <button class="next-btn" wx:if="{{showExplanation}}" bindtap="onNextQuestion">
+        {{currentQuestionIndex + 1 < currentPoint.questions.length ? '下一题' : '查看结果'}}
+      </button>
+    </view>
+  </block>
+
+  <!-- 结果页面 -->
+  <block wx:if="{{viewMode === 'result'}}">
+    <view class="result-header">
+      <text class="back-btn" bindtap="onBack">← 返回列表</text>
+      <text class="result-title">练习结果</text>
+    </view>
+    
+    <view class="result-score-card">
+      <view class="score-value {{resultScore >= 60 ? 'pass' : 'fail'}}">{{resultScore}}分</view>
+      <view class="score-detail">答对 {{resultScore >= 60 ? Math.round(resultTotal * resultScore / 100) : 0}} / {{resultTotal}} 题</view>
+    </view>
+    
+    <view class="result-details" wx:if="{{resultScore < 100}}">
+      <view class="details-title">错题解析</view>
+      <view wx:for="{{resultDetails}}" wx:key="index" class="detail-item" wx:if="{{!item.isCorrect}}">
+        <view class="detail-question">{{item.question}}</view>
+        <view class="detail-user">你的答案：{{item.userAnswer}}</view>
+        <view class="detail-correct">正确答案：{{item.correctAnswer}}</view>
+        <view class="detail-explanation">{{item.explanation}}</view>
+      </view>
+    </view>
+    
+    <view class="weak-points" wx:if="{{weakPoints.length > 0}}">
+      <view class="weak-title">薄弱语法点</view>
+      <view wx:for="{{weakPoints}}" wx:key="*this" class="weak-item">
+        <text>• {{item.point}}</text>
+      </view>
+    </view>
+    
+    <view class="result-actions">
+      <button class="retry-btn" bindtap="onRetry">重新练习</button>
+      <button class="back-list-btn" bindtap="onBack">返回列表</button>
+    </view>
+  </block>
+</view>
