@@ -66,7 +66,7 @@
     
     <view class="question-card" wx:if="{{currentQuestion}}">
       <view class="question-tag">
-        <text class="tag-topic">{{grammarTopics.topics[0].name}}</text>
+        <text class="tag-topic">{{currentTopicName}}</text>
         <text class="tag-difficulty {{currentQuestion.difficulty >= 3 ? 'hard' : currentQuestion.difficulty >= 2 ? 'medium' : 'easy'}}">
           {{currentQuestion.difficulty === 1 ? '简单' : currentQuestion.difficulty === 2 ? '中等' : currentQuestion.difficulty === 3 ? '困难' : '高阶'}}
         </text>
@@ -117,15 +117,15 @@
     <view class="session-stats" wx:if="{{sessionLog.length > 0}}">
       <view class="stat-row">
         <text class="stat-label">正确</text>
-        <text class="stat-value correct">{{sessionLog.filter(item => item.isCorrect).length}}</text>
+        <text class="stat-value correct">{{correctCount}}</text>
       </view>
       <view class="stat-row">
         <text class="stat-label">错误</text>
-        <text class="stat-value wrong">{{sessionLog.filter(item => !item.isCorrect).length}}</text>
+        <text class="stat-value wrong">{{wrongCount}}</text>
       </view>
       <view class="stat-row">
         <text class="stat-label">正确率</text>
-        <text class="stat-value">{{Math.round(sessionLog.filter(item => item.isCorrect).length / sessionLog.length * 100)}}%</text>
+        <text class="stat-value">{{accuracy}}%</text>
       </view>
     </view>
     
@@ -140,7 +140,7 @@
       <view class="weak-title">优先补强</view>
       <view wx:for="{{diagnosis.weakPoints}}" wx:key="id" class="weak-item">
         <text>{{item.name}}</text>
-        <text class="weak-pct">{{Math.round(item.probability * 100)}}%</text>
+        <text class="weak-pct">{{item.probabilityPct}}%</text>
       </view>
     </view>
     
@@ -149,7 +149,7 @@
       <view class="rec-title">推荐学习</view>
       <view wx:for="{{diagnosis.recommended}}" wx:key="id" class="rec-item">
         <text>{{item.name}}</text>
-        <text class="rec-pct">{{Math.round(item.probability * 100)}}%</text>
+        <text class="rec-pct">{{item.probabilityPct}}%</text>
       </view>
     </view>
     

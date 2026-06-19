@@ -213,8 +213,8 @@ class AdaptiveEngine {
     learningTopics.sort((a, b) => a.probability - b.probability);
     
     return {
-      weak: weakTopics.slice(0, 5),
-      recommended: learningTopics.slice(0, 5),
+      weak: weakTopics.slice(0, 5).map(t => ({...t, probabilityPct: Math.round(t.probability * 100)})),
+      recommended: learningTopics.slice(0, 5).map(t => ({...t, probabilityPct: Math.round(t.probability * 100)})),
       mastered: this.topics.filter(t => this.getTopicStatus(t.id) === 'mastered').length
     };
   }

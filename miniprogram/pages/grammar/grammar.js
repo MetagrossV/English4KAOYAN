@@ -16,11 +16,15 @@ Page({
     
     // 训练数据
     currentQuestion: null,
+    currentTopicName: '',
     questionNumber: 0,
     showExplanation: false,
     selectedAnswer: '',
     isCorrect: false,
     sessionEnded: false,
+    correctCount: 0,
+    wrongCount: 0,
+    accuracy: 0,
     
     // 结果数据
     diagnosis: null,
@@ -66,15 +70,21 @@ Page({
     engine.loadFromStorage('grammar_mastery'); // 恢复已有掌握度
     
     const question = engine.selectNextQuestion(grammarBank);
+    const topicName = grammarTopics.topics.find(t => t.id === question.topic_id)?.name || '';
+    
     this.setData({
       viewMode: 'training',
       currentQuestion: question,
+      currentTopicName: topicName,
       questionNumber: 1,
       showExplanation: false,
       selectedAnswer: '',
       isCorrect: false,
       sessionEnded: false,
-      sessionLog: []
+      sessionLog: [],
+      correctCount: 0,
+      wrongCount: 0,
+      accuracy: 0
     });
   },
 
@@ -96,11 +106,18 @@ Page({
       difficulty: question.difficulty
     }];
     
+    const correctCount = this.data.correctCount + (isCorrect ? 1 : 0);
+    const wrongCount = this.data.wrongCount + (isCorrect ? 0 : 1);
+    const accuracy = log.length > 0 ? Math.round(correctCount / log.length * 100) : 0;
+    
     this.setData({
       showExplanation: true,
       selectedAnswer: answer,
       isCorrect,
-      sessionLog: log
+      sessionLog: log,
+      correctCount,
+      wrongCount,
+      accuracy
     });
   },
 
@@ -120,8 +137,11 @@ Page({
       return;
     }
     
+    const topicName = grammarTopics.topics.find(t => t.id === question.topic_id)?.name || '';
+    
     this.setData({
       currentQuestion: question,
+      currentTopicName: topicName,
       questionNumber: this.data.questionNumber + 1,
       showExplanation: false,
       selectedAnswer: '',
